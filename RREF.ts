@@ -16,7 +16,7 @@ function augmentedMatrix(A: Matrix, b: number[]): Matrix {
  * @returns The matrix in row echelon form.
  */
 function rowEchelonForm(matrix: Matrix): Matrix {
-    const m = matrix.length;
+   const m = matrix.length;
     const n = matrix[0].length;
 
     for (let i = 0; i < m; i++) {
