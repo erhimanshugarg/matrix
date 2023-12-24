@@ -30,7 +30,12 @@ function rowEchelonForm(matrix: Matrix): Matrix {
 
         // Make the pivot element 1
         const pivot = matrix[i][pivotIndex];
-        matrix[i] = matrix[i].map((element) => element / pivot);
+        if ( pivot != null ) {
+            matrix[i] = matrix[i].map((element) => element / pivot);
+        }else {
+            console.error("Division by zero. Choose a different A and/or b.")
+            throw new Error("Division by zero. Choose a different A and/or b.");
+        }
 
         // Eliminate below the pivot
         for (let j = i + 1; j < m; j++) {
