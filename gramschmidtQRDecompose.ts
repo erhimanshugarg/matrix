@@ -12,6 +12,23 @@ function subtractVectors(v1: number[], v2: number[]): number[] {
     return v1.map((component, i) => component - v2[i]);
 }
 
+function transposeMatrix(matrix: number[][]): number[][] {
+    const rows = matrix.length;
+    const cols = matrix[0].length;
+
+    // Create a new empty matrix with swapped dimensions
+    const result: number[][] = Array.from({ length: cols }, () => Array(rows).fill(0));
+
+    // Perform the transpose operation
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            result[j][i] = matrix[i][j];
+        }
+    }
+
+    return result;
+}
+
 // Function to normalize a vector to unit length
 function normalize(vector: number[]): number[] {
     // This function normalizes a vector by dividing each of its components
@@ -48,8 +65,10 @@ function gramSchmidtQR(A: number[][]): {
             R[j][i] = dotProduct(Q[j], A.map((row) => row[i]));
         }
     }
+    Q = transposeMatrix(Q);
     return { Q, R };
 }
+
 
 // Example usage
 const A: number[][] = [
